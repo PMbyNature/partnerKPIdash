@@ -18,7 +18,7 @@
             max-width: 100%;
         }
         #uploadSection {
-            display: flex !important;
+            display: block !important;
             flex-direction: column;
             gap: 10px;
             margin-top: 20px;
@@ -33,8 +33,10 @@
         <h1>Partner KPI Dashboard</h1>
         <div id="uploadSection">
             <label for="csvFileInput">Upload a CSV File:</label>
-            <input type="file" id="csvFileInput" accept=".csv">
-            <button id="uploadButton" onclick="processCSV()">Upload CSV</button>
+            <input type="file" id="csvFileInput" accept=".csv" style="display: block;">
+            <button id="uploadButton" onclick="processCSV()" style="display: block; padding: 10px; background: blue; color: white; border: none; cursor: pointer; margin-top: 10px;">
+                Upload CSV
+            </button>
         </div>
         
         <h2>New Partners Launched in 2025</h2>
@@ -58,22 +60,22 @@
             const fileInput = document.getElementById("csvFileInput");
             const uploadButton = document.getElementById("uploadButton");
             
+            if (!uploadSection) {
+                console.error("#uploadSection is missing!");
+            } else {
+                console.log("#uploadSection exists!");
+            }
+            
             if (!fileInput) {
-                console.error("File input is missing! Adding dynamically...");
-                const newInput = document.createElement("input");
-                newInput.type = "file";
-                newInput.id = "csvFileInput";
-                newInput.accept = ".csv";
-                uploadSection.appendChild(newInput);
+                console.error("File input is missing!");
+            } else {
+                console.log("File input exists!");
             }
             
             if (!uploadButton) {
-                console.error("Upload button is missing! Adding dynamically...");
-                const newButton = document.createElement("button");
-                newButton.textContent = "Upload CSV";
-                newButton.id = "uploadButton";
-                newButton.onclick = processCSV;
-                uploadSection.appendChild(newButton);
+                console.error("Upload button is missing!");
+            } else {
+                console.log("Upload button exists!");
             }
         });
         
