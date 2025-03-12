@@ -22,9 +22,12 @@
 <body>
     <div class="container">
         <h1>Partner KPI Dashboard</h1>
-        <div style="margin-top: 20px;">
-            <input type="file" id="csvFileInput" accept=".csv">
-            <button onclick="processCSV()">Upload CSV</button>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+            <label for="csvFileInput">Upload a CSV File:</label>
+            <input type="file" id="csvFileInput" accept=".csv" style="border: 1px solid black; padding: 5px;">
+            <button onclick="processCSV()" style="padding: 10px; background: blue; color: white; border: none; cursor: pointer;">
+                Upload CSV
+            </button>
         </div>
         
         <h2>New Partners Launched in 2025</h2>
