@@ -22,10 +22,10 @@
 <body>
     <div class="container">
         <h1>Partner KPI Dashboard</h1>
-        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+        <div id="uploadSection" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
             <label for="csvFileInput">Upload a CSV File:</label>
             <input type="file" id="csvFileInput" accept=".csv" style="border: 1px solid black; padding: 5px;">
-            <button onclick="processCSV()" style="padding: 10px; background: blue; color: white; border: none; cursor: pointer;">
+            <button id="uploadButton" style="padding: 10px; background: blue; color: white; border: none; cursor: pointer;">
                 Upload CSV
             </button>
         </div>
@@ -44,6 +44,25 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const uploadSection = document.getElementById("uploadSection");
+            if (!document.getElementById("csvFileInput")) {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.id = "csvFileInput";
+                input.accept = ".csv";
+                input.style = "border: 1px solid black; padding: 5px;";
+                uploadSection.appendChild(input);
+            }
+            if (!document.getElementById("uploadButton")) {
+                const button = document.createElement("button");
+                button.textContent = "Upload CSV";
+                button.style = "padding: 10px; background: blue; color: white; border: none; cursor: pointer;";
+                button.onclick = processCSV;
+                uploadSection.appendChild(button);
+            }
+        });
+        
         function processCSV() {
             const fileInput = document.getElementById('csvFileInput');
             const file = fileInput.files[0];
